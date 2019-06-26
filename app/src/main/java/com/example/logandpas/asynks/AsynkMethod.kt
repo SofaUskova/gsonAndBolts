@@ -1,19 +1,23 @@
 package com.example.logandpas.asynks
 
+import android.content.Context
+import android.widget.TextView
 import bolts.Task
 import com.example.logandpas.server.Server
+import com.example.logandpas.utils.setError
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
 class AsynkMethod(
     var login: String,
-    var password: String
+    var password: String,
+    val textView: TextView
 ) {
 
-    fun fetchAsync() {
+    fun fetchAsync(): Task<String?>? {
         var token = -1
         var gson: JsonObject? = null
-        Task.callInBackground {
+        return Task.callInBackground {
             /*val url = URL("http://pub.zame-dev.org/senla-training-addition/lesson-21.php?method=login")
             val con = url.openConnection() as HttpURLConnection
 
@@ -37,23 +41,17 @@ class AsynkMethod(
             out.flush()
             out.close()*/
 
-            //отправить запрос на сервер
             val answer = Server().serverRun(login, password.toInt())
             gson = Gson().fromJson(answer, JsonObject::class.java)
 
-            if (gson?.get("status")?.asString != "error") {
-                throw Exception("Error on Server")
+        }.continueWith {
+            if (gson?.get("status")?.asString == "error") {
+               return@continueWith setError("Error on Server", textView)
             }
-
-            //если успешно
         }.onSuccess {
-            //получаем токен
             token = gson?.get("token")?.asInt!!
-        }.onSuccess {
-            //получаем профиль
             return@onSuccess Server().getProfil(token)
         }
-//        throw Exception("Error on Server")
     }
 
     /*private fun getParamsString(params: HashMap<String, String>): String {

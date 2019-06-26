@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_login.setOnClickListener {
                 try{
-                    val f = AsynkMethod(login.text.toString(), "222").fetchAsync()
+                    val profil = AsynkMethod("john@domain.tld", "123123", error).fetchAsync()
                 } catch(e: Exception){
                     setError(e.toString(), error)
                 }
