@@ -1,6 +1,5 @@
 package com.example.logandpas.asynks
 
-import android.content.Context
 import android.widget.TextView
 import bolts.Task
 import com.example.logandpas.server.Server

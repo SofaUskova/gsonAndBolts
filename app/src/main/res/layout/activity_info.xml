@@ -2,15 +2,16 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:fillViewport="true">
 
     <LinearLayout
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:weightSum="1">
+            android:weightSum="6"
+            android:padding="20dp">
 
 
         <TextView
@@ -18,46 +19,46 @@
                 android:text="E-mail:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_weight="0.1"/>
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
         <TextView
                 android:id="@+id/first_name"
                 android:text="First name:"
                 android:textSize="18sp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"/>
+                android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/last_name"
                 android:text="Last name:"
                 android:textSize="18sp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"/>
+                android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/birth"
                 android:text="Birth date:"
                 android:textSize="18sp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"/>
+                android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/notes"
                 android:text="Notes:"
                 android:textSize="18sp"
+                android:layout_weight="1.9"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.59"/>
+                android:layout_height="wrap_content"/>
 
         <Button
                 android:id="@+id/btn_logout"
                 android:text="logout"
                 android:textSize="20sp"
-                android:layout_weight="0.01"
+                android:layout_weight="0.1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">logAndPas</string>
+    <string name="mail">Mail: %1$s</string>
+    <string name="first_name">First name: %1$s</string>
+    <string name="last_name">Last name: %1$s</string>
+    <string name="birth_date">Birth date: %1$s</string>
+    <string name="note">Note: %1$s</string>
 </resources>
