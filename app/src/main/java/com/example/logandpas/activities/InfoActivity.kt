@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.logandpas.R
-import com.example.logandpas.server.Profil
+import com.example.logandpas.retrofit.RegistrationResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_info.*
 
@@ -14,7 +14,7 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        val person = Gson().fromJson(intent.getStringExtra("PERSON"), Profil::class.java)
+        val person = Gson().fromJson(intent.getStringExtra("PERSON"), RegistrationResponse::class.java)
 
         if (savedInstanceState != null) {
             mail.text = savedInstanceState.getString("MAIL")

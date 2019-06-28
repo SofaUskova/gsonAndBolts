@@ -3,13 +3,12 @@ package com.example.logandpas.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import bolts.Task
-import com.example.logandpas.asynks.AsynkMethod
+import com.example.logandpas.retrofit.WorksWithServer
 import com.example.logandpas.utils.setError
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var task: Task<String?>? = null
+    private var task: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +25,15 @@ class MainActivity : AppCompatActivity() {
             else if (!login.text.toString().contains(Regex(""".*@.*\..*""")))
                 setError("Введите корректный e-mail!", error)
             else {
-                task = AsynkMethod(login.text.toString(), password.text.toString(), error).fetchAsync()
-                /*если прогонять через дебаг task вернет то, что нужно,
-                если просто запустить приложение task вернет null
-                 */
-                if (task?.result != null) {
+                task = WorksWithServer(
+                    login.text.toString(),
+                    password.text.toString()
+                ).serverStart()
+
+                if (task != null) {
                     startActivity(
                         Intent(this, InfoActivity::class.java)
-                            .putExtra("PERSON", task?.result)
+                            .putExtra("PERSON", task)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     )
                 } else {
